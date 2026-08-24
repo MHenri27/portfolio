@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Henri</title>
+  <!-- Classic Google Fonts: Playfair Display + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #f4efe6;        /* Warm off-white / newsprint */
+      --card-bg: #fbf9f5;   /* Lighter cream card */
+      --text: #22201e;      /* Deep ink black */
+      --accent: #d8968a;    /* Warm terracotta accent */
+      --border: #e2dacd;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      padding: 1.5rem;
+    }
+
+    /* Tactile container card */
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 3.5rem 4rem;
+      border-radius: 14px;
+      /* Deeper, softer light drop shadow */
+      box-shadow: 0 20px 40px -10px rgba(40, 35, 30, 0.12), 
+                  0 12px 18px -8px rgba(40, 35, 30, 0.08);
+      text-align: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 28px 50px -12px rgba(40, 35, 30, 0.16), 
+                  0 16px 24px -8px rgba(40, 35, 30, 0.10);
+    }
+
+    h1 {
+      font-family: "Libre Baskerville", serif;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    /* The colored punctuation accent */
+    .accent {
+      color: var(--accent);
+      font-style: italic;
+      font-family: "Libre Baskerville", serif;
+    }
+
+    /* Small subtle subtext underneath */
+    .subtext {
+      margin-top: 1rem;
+      font-size: 1.25rem;
+      color: #766f65;
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="card">
+    <h1>Hey<span class="accent">!</span> I am Henri</h1>
+    <p class="subtext">Full portfolio coming...</p>
+  </main>
+
+</body>
+</html>
