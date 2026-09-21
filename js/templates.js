@@ -1,13 +1,13 @@
 const ILLUSTRATIONS = {
   shops: () => {
     const shop = (x) => {
-      let o = "";
+      let out = "";
       for (let i = 0; i < 6; i++) {
-        const c = i % 2 === 0 ? "#d94657" : "#faf6f0";
-        o += `<rect x="${x + i * 25}" y="6" width="25" height="34" fill="${c}"/><circle cx="${x + 12.5 + i * 25}" cy="40" r="12.5" fill="${c}"/>`;
+        const color = i % 2 === 0 ? "#d94657" : "#faf6f0";
+        out += `<rect x="${x + i * 25}" y="6" width="25" height="34" fill="${color}"/><circle cx="${x + 12.5 + i * 25}" cy="40" r="12.5" fill="${color}"/>`;
       }
       return (
-        o +
+        out +
         `<rect x="${x + 8}" y="58" width="134" height="66" fill="#e9ded4"/><rect x="${x + 18}" y="70" width="60" height="38" fill="#faf6f0"/><rect x="${x + 92}" y="70" width="38" height="54" fill="#672a31"/>`
       );
     };
