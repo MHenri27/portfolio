@@ -7,7 +7,7 @@ document.getElementById("menuList").innerHTML = [
 ]
   .map(
     (section, i) =>
-      `<li style="--i: ${i}"><a href="#${esc(section.id)}"><span class="menu-num">${String(i + 1).padStart(2, "0")}</span>${esc(section.dataset.name)}</a></li>`,
+      `<li style="--i: ${i}"><a href="#${esc(section.id)}">${esc(section.dataset.name)}</a></li>`,
   )
   .join("");
 

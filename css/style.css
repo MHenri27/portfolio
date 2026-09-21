@@ -1794,13 +1794,6 @@ em .ch:hover {
     color: var(--cherry);
   }
 
-  .menu-num {
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    color: var(--cherry-dark);
-  }
-
   .scroll-item {
     padding: 6rem 1.2rem 3rem;
     margin-bottom: 15vh;
