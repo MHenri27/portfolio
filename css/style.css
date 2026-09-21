@@ -30,6 +30,7 @@
 }
 
 html {
+  overflow-x: clip;
   background: var(--paper);
   scroll-behavior: auto;
 }
@@ -225,6 +226,7 @@ header * {
 
 main {
   width: 100vw;
+  overflow-x: clip;
 }
 
 /* scroll items */
