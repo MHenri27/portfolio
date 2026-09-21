@@ -1,0 +1,16 @@
+# secrets
+.env
+.env.*
+*.pem
+*.key
+
+# tools and editors
+node_modules/
+.claude/
+.vscode/
+.idea/
+
+# system files
+.DS_Store
+Thumbs.db
+*.log
