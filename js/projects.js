@@ -148,7 +148,7 @@ const STACK_LAYERS = [
   ["commerce", "Commerce and insight"],
 ];
 
-// wider toolkit shown under the matrix, edit freely
+// wider toolkit shown under the matrix
 const MORE_TOOLS = [
   [
     "Languages",
