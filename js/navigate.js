@@ -54,6 +54,7 @@ document.addEventListener("click", (e) => {
 
 // signs on the road
 roadSvg.addEventListener("click", (e) => {
+  if (skipClick) return;
   const sign = e.target.closest(".road-sign");
   if (sign) goTo(sign.dataset.href);
 });

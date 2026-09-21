@@ -14,6 +14,7 @@ const headingDeg = (fn, y) =>
 
 // car nose points down
 const carMarkup = `
+  <rect x="-14" y="-24" width="28" height="48" fill="transparent"/>
   <g id="carShadow"><polygon fill="#241b1b" opacity="0.2" points="-9,-19 9,-19 10,-8 10,12 8,19 -8,19 -10,12 -10,-8"/></g>
   <g id="carBody">
     <g fill="#241b1b"><rect x="-12" y="-14" width="3" height="7"/><rect x="9" y="-14" width="3" height="7"/><rect x="-12" y="7" width="3" height="7"/><rect x="9" y="7" width="3" height="7"/></g>
@@ -37,6 +38,8 @@ let carY1 = 600;
 let carEl = null;
 let bodyEl = null;
 let shadowEl = null;
+let roadScale = 1;
+let dragSize = 1;
 
 // one sign per section, starting with the intro
 const roadSections = [
@@ -78,6 +81,7 @@ function skidAt(y) {
 function buildRoad() {
   const roadPx = roadSvg.parentElement.clientWidth || SCENE_W;
   const scale = roadPx / SCENE_W;
+  roadScale = scale;
   const roadH = window.innerHeight / scale;
   roadSvg.setAttribute("viewBox", `0 0 ${SCENE_W} ${roadH}`);
   carY0 = 30;
@@ -228,11 +232,11 @@ function updateCar() {
   );
   bodyEl.setAttribute(
     "transform",
-    `scale(${(1 + lift * 0.02).toFixed(3)})`,
+    `scale(${((1 + lift * 0.02) * dragSize).toFixed(3)})`,
   );
   shadowEl.setAttribute(
     "transform",
-    `translate(${(lift * 0.6).toFixed(1)},${(lift * 0.6).toFixed(1)})`,
+    `translate(${(lift * 0.6 + (dragSize - 1) * 5).toFixed(1)},${(lift * 0.6 + (dragSize - 1) * 5).toFixed(1)})`,
   );
 }
 
@@ -263,3 +267,67 @@ window.addEventListener("resize", buildRoad);
 window.addEventListener("load", buildRoad);
 if (document.fonts && document.fonts.ready)
   document.fonts.ready.then(buildRoad);
+
+// drag the car to scroll the page
+let dragging = false;
+let dragTarget = 1;
+let grabOffset = 0;
+let skipClick = false;
+
+function growCar() {
+  dragSize += (dragTarget - dragSize) * 0.2;
+  if (Math.abs(dragTarget - dragSize) < 0.005) dragSize = dragTarget;
+  updateCar();
+  if (dragSize !== dragTarget) requestAnimationFrame(growCar);
+}
+
+function sceneY(clientY) {
+  return (clientY - roadSvg.getBoundingClientRect().top) / roadScale;
+}
+
+function dragTo(clientY) {
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  const y = sceneY(clientY) - grabOffset;
+  const progress = Math.min(1, Math.max(0, (y - carY0) / (carY1 - carY0)));
+  window.scrollTo(0, progress * max);
+}
+
+// signs can sit on top of the car, so check the car area directly
+function overCar(e) {
+  const box = carEl.getBoundingClientRect();
+  return (
+    e.clientX >= box.left &&
+    e.clientX <= box.right &&
+    e.clientY >= box.top &&
+    e.clientY <= box.bottom
+  );
+}
+
+roadSvg.addEventListener("pointerdown", (e) => {
+  if (!overCar(e)) return;
+  e.preventDefault();
+  cancelAnimationFrame(scrollFrame);
+  const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+  const carY = carY0 + (window.scrollY / max) * (carY1 - carY0);
+  grabOffset = sceneY(e.clientY) - carY;
+  dragging = true;
+  dragTarget = 1.6;
+  document.documentElement.classList.add("dragging-car");
+  growCar();
+});
+
+window.addEventListener("pointermove", (e) => {
+  if (dragging) dragTo(e.clientY);
+});
+
+function stopDrag() {
+  if (!dragging) return;
+  dragging = false;
+  skipClick = true;
+  setTimeout(() => (skipClick = false), 0);
+  dragTarget = 1;
+  document.documentElement.classList.remove("dragging-car");
+  growCar();
+}
+window.addEventListener("pointerup", stopDrag);
+window.addEventListener("pointercancel", stopDrag);

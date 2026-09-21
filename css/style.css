@@ -1363,6 +1363,18 @@ em .ch:hover {
   height: 100%;
 }
 
+#car {
+  pointer-events: auto;
+  cursor: grab;
+  touch-action: none;
+}
+
+.dragging-car,
+.dragging-car * {
+  cursor: grabbing !important;
+  user-select: none;
+}
+
 .road-sign {
   pointer-events: auto;
   cursor: pointer;
