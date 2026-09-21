@@ -47,6 +47,22 @@
         <span class="folio-name" id="folioName">Introduction</span>
       </div>
 
+      <button
+        type="button"
+        class="menu-btn"
+        id="menuBtn"
+        aria-expanded="false"
+        aria-controls="menuPanel"
+        aria-label="Open menu"
+      >
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="menu-panel" id="menuPanel" aria-label="Sections">
+        <ol id="menuList"></ol>
+      </nav>
+
       <nav class="nav-links">
         <div class="car-picker" role="group" aria-label="Car colour">
           <span class="cp-label">Car</span>
@@ -369,6 +385,7 @@
     <script src="js/obstacles.js"></script>
     <script src="js/road.js"></script>
     <script src="js/navigate.js"></script>
+    <script src="js/menu.js"></script>
     <script src="js/effects.js"></script>
   </body>
 </html>
