@@ -28,7 +28,7 @@ const ILLUSTRATIONS = {
     `<svg viewBox="0 0 320 110" role="img" aria-label="Abstract blocks"><rect x="10" y="40" width="70" height="60" fill="#d94657"/><rect x="92" y="14" width="70" height="86" fill="#241b1b"/><rect x="174" y="52" width="70" height="48" fill="#672a31"/><rect x="256" y="28" width="54" height="72" fill="#d94657"/></svg>`,
 };
 
-// custom svg strings come from projects.js, so only put your own markup there
+// custom svg strings from projects.js are put in as they are
 function illustration(p) {
   const raw =
     p.illustration && p.illustration.trim().startsWith("<svg")

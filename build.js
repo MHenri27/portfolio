@@ -1,6 +1,6 @@
 // Puts the project content straight into index.html so search engines and
 // crawlers that do not run javascript can read it.
-// Run it with: node build.js
+// run it with: node build.js
 const fs = require("fs");
 const vm = require("vm");
 

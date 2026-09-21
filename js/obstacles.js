@@ -1,12 +1,7 @@
-// obstacles on the road
-// off: distance from the road center
-// side: alternates between left and right
-// flat: lies on the road and follows its angle
-// dodge: [sideways amount, reach] car steers away
-// lift: [height, reach] car hops (or dips when negative)
-// skid: [angle, reach] car slides
-// hit: car knocks it over
-// to add one, add an entry here and put its name in sequence
+// obstacles on the road, each one has a look and a reaction for the car
+// off is the distance from the road center, side alternates left and right
+// flat follows the road angle and hit means the car knocks it over
+// dodge, lift and skid are [amount, reach] for steering, hopping and sliding
 const OBSTACLES = {
   cone: {
     off: 0,

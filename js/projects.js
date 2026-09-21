@@ -1,23 +1,11 @@
-// All the project content lives here.
-// To add a project, copy one object, paste it at the end of PROJECTS and edit it.
-// The project page, contents list, stack matrix, tool list and road sign all update.
+// projects shown on the site, the pages, contents list, stack matrix,
+// tool list and road signs are all made from this
 //
-// id - unique name without spaces, used for the #link
-// title - big heading, use "\n" for a line break
-// sign - short text on the road sign (defaults to title)
-// short - small note in the contents list
-// sticker - tilted label in the corner
-// ghost - big faded word behind the page
-// note - small note next to the title
-// desc - the paragraph
-// highlights - parts of desc to highlight
-// scope - list of what was built
-// builtWith - tools in the "Built with" line
-// extraTools - more tools for the tool list
-// link - [label, url]
-// specs - [[key, value], ...]
-// illustration - "shops", "network", "hanger", "blocks" or your own svg string
-// stack - tools per layer: interface, application, data, infrastructure, commerce
+// title uses \n for a line break and sign is the short road sign text
+// desc is the paragraph, highlights are the parts of it that get marked
+// stack has one entry per layer: interface, application, data,
+// infrastructure and commerce
+// illustration is shops, network, hanger, blocks or a full svg string
 
 const PROJECTS = [
   {
