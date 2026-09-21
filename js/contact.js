@@ -1,13 +1,14 @@
 // copy buttons
-document.querySelectorAll(".copy").forEach((b) => {
-  const original = b.textContent;
-  b.addEventListener("click", async () => {
+document.querySelectorAll(".copy").forEach((btn) => {
+  const label = btn.textContent;
+  btn.addEventListener("click", async () => {
     try {
-      await navigator.clipboard.writeText(b.dataset.copy);
-      b.textContent = "Copied";
-    } catch (e) {
-      b.textContent = b.dataset.copy;
+      await navigator.clipboard.writeText(btn.dataset.copy);
+      btn.textContent = "Copied";
+    } catch (err) {
+      // no clipboard access, just show the text
+      btn.textContent = btn.dataset.copy;
     }
-    setTimeout(() => (b.textContent = original), 1600);
+    setTimeout(() => (btn.textContent = label), 1600);
   });
 });

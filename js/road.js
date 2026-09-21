@@ -49,33 +49,35 @@ const roadSections = [
   ["Contact", "#contact"],
 ];
 
+// how far the car moves sideways to go around things
 function lateralAt(y) {
-  let lat = 0;
-  roadObjs.forEach((o) => {
-    if (!o.def.dodge) return;
-    const [amt, win] = o.def.dodge;
-    const d = Math.abs(y - o.y);
-    if (d < win)
-      lat += -Math.sign(o.off) * amt * (1 - (d / win) ** 2) ** 2;
+  let shift = 0;
+  roadObjs.forEach((obj) => {
+    if (!obj.def.dodge) return;
+    const [amount, reach] = obj.def.dodge;
+    const dist = Math.abs(y - obj.y);
+    if (dist < reach)
+      shift += -Math.sign(obj.off) * amount * (1 - (dist / reach) ** 2) ** 2;
   });
-  return Math.max(-15, Math.min(15, lat));
+  return Math.max(-15, Math.min(15, shift));
 }
 const carPathX = (y) => roadX(y) + lateralAt(y);
 
+// extra rotation when the car slides
 function skidAt(y) {
-  let a = 0;
-  roadObjs.forEach((o) => {
-    if (!o.def.skid) return;
-    const [amp, win] = o.def.skid;
-    const d = y - o.y;
-    if (Math.abs(d) < win)
-      a +=
-        amp *
-        Math.sin((d / win) * Math.PI * 2) *
-        (1 - (d / win) ** 2) *
-        (o.off >= 0 ? 1 : -1);
+  let angle = 0;
+  roadObjs.forEach((obj) => {
+    if (!obj.def.skid) return;
+    const [amount, reach] = obj.def.skid;
+    const dist = y - obj.y;
+    if (Math.abs(dist) < reach)
+      angle +=
+        amount *
+        Math.sin((dist / reach) * Math.PI * 2) *
+        (1 - (dist / reach) ** 2) *
+        (obj.off >= 0 ? 1 : -1);
   });
-  return a;
+  return angle;
 }
 
 function buildRoad() {
@@ -204,24 +206,24 @@ function updateCar() {
     1,
     document.documentElement.scrollHeight - window.innerHeight,
   );
-  const prog = Math.min(1, Math.max(0, window.scrollY / max));
-  const y = carY0 + prog * (carY1 - carY0);
+  const progress = Math.min(1, Math.max(0, window.scrollY / max));
+  const y = carY0 + progress * (carY1 - carY0);
   const x = carPathX(y);
 
   // hops make the car bigger and move its shadow
   let lift = 0;
-  roadObjs.forEach((o) => {
-    if (o.def.lift) {
-      const [amp, win] = o.def.lift;
-      const d = Math.abs(y - o.y);
-      if (d < win) lift += amp * (1 - (d / win) ** 2) ** 1.5;
+  roadObjs.forEach((obj) => {
+    if (obj.def.lift) {
+      const [amount, reach] = obj.def.lift;
+      const dist = Math.abs(y - obj.y);
+      if (dist < reach) lift += amount * (1 - (dist / reach) ** 2) ** 1.5;
     }
-    if (o.def.hit)
-      o.el.firstElementChild.classList.toggle("hit", y + 14 > o.y);
-    if (o.walker) {
+    if (obj.def.hit)
+      obj.el.firstElementChild.classList.toggle("hit", y + 14 > obj.y);
+    if (obj.walker) {
       // person crosses when the car comes close
-      const t = Math.min(1, Math.max(0, (y - (o.y - 75)) / 75));
-      o.walker.setAttribute(
+      const t = Math.min(1, Math.max(0, (y - (obj.y - 75)) / 75));
+      obj.walker.setAttribute(
         "transform",
         `translate(${(-ROAD_W / 2 - 5 + t * (ROAD_W + 10)).toFixed(1)},${(Math.sin(t * 22) * 1.3).toFixed(1)})`,
       );
@@ -247,15 +249,15 @@ const carBtns = document.querySelectorAll(".car-picker button");
 function setCar(name) {
   if (!CAR_COLORS[name]) name = "cherry";
   document.documentElement.style.setProperty("--car", CAR_COLORS[name]);
-  carBtns.forEach((b) =>
-    b.setAttribute("aria-pressed", String(b.dataset.car === name)),
+  carBtns.forEach((btn) =>
+    btn.setAttribute("aria-pressed", String(btn.dataset.car === name)),
   );
   try {
     localStorage.setItem("car", name);
-  } catch (e) {}
+  } catch (err) {}
 }
-carBtns.forEach((b) =>
-  b.addEventListener("click", () => setCar(b.dataset.car)),
+carBtns.forEach((btn) =>
+  btn.addEventListener("click", () => setCar(btn.dataset.car)),
 );
 let savedCar = "cherry";
 try {

@@ -1,10 +1,10 @@
 // hovering a cell dims the other projects
 const matrix = document.getElementById("matrix");
-function isolate(c) {
+function isolate(col) {
   matrix
     .querySelectorAll("[data-c]")
     .forEach((el) =>
-      el.classList.toggle("dim", c !== null && el.dataset.c !== c),
+      el.classList.toggle("dim", col !== null && el.dataset.c !== col),
     );
 }
 matrix.querySelectorAll("[data-c]").forEach((el) => {
@@ -43,11 +43,11 @@ matrix.addEventListener("mouseleave", () => isolate(null));
   let dragging = false;
   let grab = 0;
   function scrollToThumb(clientX) {
-    const r = bar.getBoundingClientRect();
+    const box = bar.getBoundingClientRect();
     const thumbW = thumb.offsetWidth;
-    const x = Math.min(Math.max(clientX - r.left - grab, 0), r.width - thumbW);
+    const x = Math.min(Math.max(clientX - box.left - grab, 0), box.width - thumbW);
     const max = scroller.scrollWidth - scroller.clientWidth;
-    scroller.scrollTo({ left: (x / (r.width - thumbW)) * max, behavior: "instant" });
+    scroller.scrollTo({ left: (x / (box.width - thumbW)) * max, behavior: "instant" });
   }
   thumb.addEventListener("pointerdown", (e) => {
     dragging = true;
@@ -67,12 +67,11 @@ matrix.addEventListener("mouseleave", () => isolate(null));
   // click the bar to scroll there
   bar.addEventListener("pointerdown", (e) => {
     if (e.target === thumb) return;
-    const r = bar.getBoundingClientRect();
+    const box = bar.getBoundingClientRect();
     const max = scroller.scrollWidth - scroller.clientWidth;
-    const ratio = (e.clientX - r.left - thumb.offsetWidth / 2) / (r.width - thumb.offsetWidth);
+    const ratio = (e.clientX - box.left - thumb.offsetWidth / 2) / (box.width - thumb.offsetWidth);
     scroller.scrollTo({ left: Math.min(1, Math.max(0, ratio)) * max, behavior: "smooth" });
   });
-
 })();
 
 // hovering a tool highlights it in the matrix
@@ -80,7 +79,7 @@ const toolBtns = document.querySelectorAll("#toolList button");
 const cells = [...matrix.querySelectorAll(".m-cell")];
 
 function showTool(name) {
-  const re = new RegExp(
+  const pattern = new RegExp(
     "(^|[^A-Za-z0-9])" +
       name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") +
       "($|[^A-Za-z0-9])",
@@ -88,17 +87,17 @@ function showTool(name) {
   );
   isolate(null);
   matrix.classList.add("tooling");
-  cells.forEach((c) => c.classList.toggle("hit", re.test(c.textContent)));
+  cells.forEach((cell) => cell.classList.toggle("hit", pattern.test(cell.textContent)));
 }
 
 function clearTool() {
   matrix.classList.remove("tooling");
-  cells.forEach((c) => c.classList.remove("hit"));
+  cells.forEach((cell) => cell.classList.remove("hit"));
 }
 
-toolBtns.forEach((b) => {
-  b.addEventListener("mouseenter", () => showTool(b.textContent));
-  b.addEventListener("focus", () => showTool(b.textContent));
-  b.addEventListener("mouseleave", clearTool);
-  b.addEventListener("blur", clearTool);
+toolBtns.forEach((btn) => {
+  btn.addEventListener("mouseenter", () => showTool(btn.textContent));
+  btn.addEventListener("focus", () => showTool(btn.textContent));
+  btn.addEventListener("mouseleave", clearTool);
+  btn.addEventListener("blur", clearTool);
 });
