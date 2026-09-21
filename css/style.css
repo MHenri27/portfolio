@@ -451,7 +451,7 @@ main {
 }
 
 .project-title {
-  max-width: 8ch;
+  max-width: 100%;
   font-family: var(--display);
   font-size: clamp(3.5rem, 6.4vw, 7rem);
   font-weight: 400;

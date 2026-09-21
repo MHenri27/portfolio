@@ -22,7 +22,7 @@
 const PROJECTS = [
   {
     id: "work",
-    title: "Esita Oma Maitse",
+    title: "Esita\nOma Maitse",
     sign: "EOM",
     short: "Custom commerce",
     sticker: "Two shops",
