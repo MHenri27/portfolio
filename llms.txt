@@ -1,8 +1,9 @@
-# Henri
+# Henri Maasik
 
 > Freelance software developer. I design and build software systems, interfaces and backend infrastructure, with the implementation and background work mattering as much as what people see.
 
 Site: https://mhenri.me/
+Also known as: Henri
 
 ## Services
 
