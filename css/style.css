@@ -160,16 +160,6 @@ header * {
   color: var(--ink-soft);
 }
 
-.folio-num {
-  font-family: var(--display);
-  font-size: 1.5rem;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  color: var(--cherry);
-  min-width: 1.6ch;
-  text-align: right;
-}
-
 .folio-name {
   min-width: 11ch;
 }
@@ -322,24 +312,6 @@ main {
   align-items: end;
 }
 
-.eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 2.2rem;
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-}
-
-.eyebrow::before {
-  content: "";
-  width: 2.2rem;
-  height: 1px;
-  background: var(--cherry);
-}
-
 .hero-title {
   max-width: 11ch;
   font-family: var(--display);
@@ -397,24 +369,11 @@ main {
   letter-spacing: -0.02em;
 }
 
-.contents .c-dots {
-  align-self: end;
-  margin-bottom: 0.35rem;
-  border-bottom: 2px dotted var(--line-strong);
-}
-
 .contents .c-note {
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink-faint);
-}
-
-.contents .c-n {
-  font-size: 0.8rem;
-  color: var(--cherry-dark);
-  letter-spacing: 0.1em;
-  min-width: 2ch;
 }
 
 .contents li a:hover {
@@ -444,10 +403,6 @@ main {
 
 .project-narrative {
   padding-top: 3rem;
-}
-
-.project-kicker {
-  margin-bottom: 1.6rem;
 }
 
 .project-title {
@@ -597,14 +552,6 @@ main {
 }
 
 /* stack */
-
-.stack-head {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(2rem, 6vw, 8rem);
-  align-items: end;
-  margin-bottom: 4rem;
-}
 
 .section-title {
   max-width: 9ch;
@@ -812,11 +759,6 @@ main {
   align-content: center;
 }
 
-.footer-label {
-  margin-bottom: 2rem;
-  color: var(--cherry-dark);
-}
-
 .footer-title {
   max-width: 10ch;
   font-family: var(--display);
@@ -829,54 +771,6 @@ main {
 .footer-title em {
   color: var(--cherry);
   font-style: normal;
-}
-
-/* brief options */
-.brief {
-  margin-top: 4rem;
-  max-width: 60rem;
-}
-
-.brief-options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem 2rem;
-  margin-top: 1rem;
-}
-
-.brief-options button {
-  font-family: var(--display);
-  font-size: clamp(1.4rem, 2.4vw, 2.2rem);
-  letter-spacing: -0.03em;
-  color: var(--ink-faint);
-  position: relative;
-  padding: 0.1em 0;
-  transition: color 0.25s ease;
-}
-
-.brief-options button::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 3px;
-  background: var(--cherry);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s var(--ease);
-}
-
-.brief-options button:hover {
-  color: var(--ink);
-}
-
-.brief-options button[aria-pressed="true"] {
-  color: var(--ink);
-}
-
-.brief-options button[aria-pressed="true"]::after {
-  transform: scaleX(1);
 }
 
 .footer-bottom {
@@ -1247,8 +1141,7 @@ em .ch:hover {
   margin-top: 0.8rem;
 }
 
-.tool-list button,
-.brief-options button {
+.tool-list button {
   font-family: var(--display);
   letter-spacing: -0.03em;
   color: var(--ink-faint);
@@ -1301,29 +1194,6 @@ em .ch:hover {
   padding-left: 0.7rem;
 }
 
-.brief-preview {
-  margin-top: 1.4rem;
-  text-transform: none;
-  letter-spacing: 0.04em;
-}
-
-.swatches {
-  display: flex;
-  margin-top: 1.4rem;
-  justify-content: flex-end;
-}
-
-.swatches i {
-  width: 2.2rem;
-  height: 0.9rem;
-  display: block;
-  transition: transform 0.35s var(--ease);
-}
-
-.swatches i:hover {
-  transform: translateY(-0.4rem);
-}
-
 .footer-side {
   display: flex;
   flex-direction: column;
@@ -1344,9 +1214,6 @@ em .ch:hover {
     position: static;
     display: inline-block;
     margin-bottom: 1.5rem;
-  }
-  .swatches {
-    justify-content: flex-start;
   }
   .footer-side {
     align-items: flex-start;
@@ -1662,11 +1529,6 @@ em .ch:hover {
   .project-grid {
     grid-template-columns: minmax(0, 1fr);
   }
-
-  .stack-head {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
 }
 
 @media (max-width: 700px) {
@@ -1825,10 +1687,6 @@ em .ch:hover {
   }
 
   .contents .c-note {
-    display: none;
-  }
-
-  .contents .c-dots {
     display: none;
   }
 
