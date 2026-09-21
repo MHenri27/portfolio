@@ -23,7 +23,11 @@ function scrollToY(y) {
     return;
   }
 
-  const duration = Math.min(2200, Math.max(700, Math.abs(distance) * 0.5));
+  // shorter on small screens
+  const small = window.innerWidth <= 700;
+  const duration = small
+    ? Math.min(1100, Math.max(450, Math.abs(distance) * 0.25))
+    : Math.min(2200, Math.max(700, Math.abs(distance) * 0.5));
   const startTime = performance.now();
 
   function step(now) {

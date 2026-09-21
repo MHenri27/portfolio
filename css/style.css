@@ -1654,6 +1654,12 @@ em .ch:hover {
     display: none;
   }
 
+  /* keep the logo readable over the content */
+  header {
+    background: linear-gradient(var(--paper) 55%, transparent);
+    padding-bottom: 2rem;
+  }
+
   .menu-btn {
     display: flex;
     flex-direction: column;
@@ -1768,6 +1774,24 @@ em .ch:hover {
 
   .scroll-item {
     padding: 6rem 1.2rem 3rem;
+    margin-bottom: 15vh;
+  }
+
+  /* lighter vignette */
+  body::after {
+    background: radial-gradient(
+      ellipse at center,
+      transparent 55%,
+      rgba(0, 0, 0, 0.1) 100%
+    );
+  }
+
+  /* faster pop in */
+  .js .rv {
+    transition:
+      opacity 0.3s ease,
+      transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition-delay: calc(var(--i, 0) * 45ms);
   }
 
   .hero-layout {
@@ -1824,12 +1848,14 @@ em .ch:hover {
   }
 
   .matrix-wrap {
-    --lab-w: 5.6rem;
+    --lab-w: 6.8rem;
     --col-w: 72vw;
   }
 
   .mx-labels .m-row {
-    font-size: 0.71rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.04em;
+    padding-right: 0.4rem;
   }
 
   .footer-bottom {
