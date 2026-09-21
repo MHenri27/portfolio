@@ -76,15 +76,20 @@ document.querySelectorAll(".rv").forEach((el, i) => {
 });
 
 // fade in sections when they come into view
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((e) => {
-      if (e.isIntersecting) e.target.classList.add("in");
-    });
-  },
-  { threshold: 0.25 },
-);
-items.forEach((i) => observer.observe(i));
+// no threshold, so very tall sections on small screens still show up
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) e.target.classList.add("in");
+      });
+    },
+    { rootMargin: "-10% 0px" },
+  );
+  items.forEach((i) => observer.observe(i));
+} else {
+  items.forEach((i) => i.classList.add("in"));
+}
 
 window.addEventListener("scroll", animateOnScroll, { passive: true });
 window.addEventListener("resize", animateOnScroll);

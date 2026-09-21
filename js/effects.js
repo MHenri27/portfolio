@@ -120,7 +120,6 @@ cycle.addEventListener("keydown", (e) => {
 const shapes = [...document.querySelectorAll(".shape")];
 const ghosts = [...document.querySelectorAll(".ghost")];
 const stampSvgs = [...document.querySelectorAll(".stamp svg")];
-const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 function updateLife() {
   const W = window.innerWidth;

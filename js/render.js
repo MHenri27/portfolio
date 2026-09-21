@@ -28,6 +28,7 @@ const ILLUSTRATIONS = {
     `<svg viewBox="0 0 320 110" role="img" aria-label="Abstract blocks"><rect x="10" y="40" width="70" height="60" fill="#d94657"/><rect x="92" y="14" width="70" height="86" fill="#241b1b"/><rect x="174" y="52" width="70" height="48" fill="#672a31"/><rect x="256" y="28" width="54" height="72" fill="#d94657"/></svg>`,
 };
 
+// custom svg strings come from projects.js, so only put your own markup there
 function illustration(p) {
   const raw =
     p.illustration && p.illustration.trim().startsWith("<svg")
@@ -40,7 +41,7 @@ function projectSection(p) {
   let desc = esc(p.desc);
   (p.highlights || []).forEach((h) => {
     const e = esc(h);
-    desc = desc.replace(e, `<mark class="hl">${e}</mark>`);
+    desc = desc.replace(e, () => `<mark class="hl">${e}</mark>`);
   });
   const arrow =
     '<svg viewBox="0 0 40 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M38 22 C 26 24, 14 18, 5 7"/><path d="M4 15 L4 6 L13 7"/></svg>';
@@ -59,7 +60,7 @@ function projectSection(p) {
         <p class="project-desc rv" style="--i: 1">${desc}</p>
         ${p.scope && p.scope.length ? `<ul class="scope rv" style="--i: 2">${p.scope.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
         ${built ? `<div class="project-tools rv" style="--i: 3"><span>Built with</span>${built}</div>` : ""}
-        ${p.link ? `<a href="${esc(p.link[1])}" class="editorial-link rv" style="--i: 4">${esc(p.link[0])}</a>` : ""}
+        ${p.link ? `<a href="${esc(safeUrl(p.link[1]))}" class="editorial-link rv" style="--i: 4">${esc(p.link[0])}</a>` : ""}
       </div>
       <div class="project-specs">
         ${illustration(p)}

@@ -178,7 +178,7 @@ function buildRoad() {
   signs.forEach((sign) => {
     const cx = roadX(sign.y);
     const w = 50;
-    out += `<g class="road-sign" data-href="${esc(sign.href)}" transform="translate(${cx.toFixed(1)},${sign.y.toFixed(1)})"><rect x="${-w / 2 + 2}" y="-3" width="${w}" height="12" fill="#241b1b" opacity="0.16"/><rect x="${-w / 2}" y="-6" width="${w}" height="12" fill="#241b1b"/><rect x="${-w / 2}" y="-6" width="3" height="12" fill="#d94657"/><rect x="${w / 2 - 3}" y="-6" width="3" height="12" fill="#d94657"/>`;
+    out += `<g class="road-sign" data-href="${esc(sign.href)}" role="link" tabindex="0" aria-label="Go to ${esc(sign.label)}" transform="translate(${cx.toFixed(1)},${sign.y.toFixed(1)})"><rect x="${-w / 2 + 2}" y="-3" width="${w}" height="12" fill="#241b1b" opacity="0.16"/><rect x="${-w / 2}" y="-6" width="${w}" height="12" fill="#241b1b"/><rect x="${-w / 2}" y="-6" width="3" height="12" fill="#d94657"/><rect x="${w / 2 - 3}" y="-6" width="3" height="12" fill="#d94657"/>`;
     if (scale >= 0.8)
       out += `<text x="0" y="2.6" text-anchor="middle" font-family="Azeret Mono, monospace" font-size="7.6" letter-spacing=".3" fill="#faf6f0">${esc(sign.label.slice(0, 9).toUpperCase())}</text>`;
     out += `</g>`;
@@ -263,7 +263,13 @@ setCar(savedCar);
 
 buildRoad();
 window.addEventListener("scroll", updateCar, { passive: true });
-window.addEventListener("resize", buildRoad);
+
+// rebuild the road once after resizing stops
+let resizeTimer;
+window.addEventListener("resize", () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(buildRoad, 100);
+});
 window.addEventListener("load", buildRoad);
 if (document.fonts && document.fonts.ready)
   document.fonts.ready.then(buildRoad);
@@ -304,7 +310,7 @@ function overCar(e) {
 }
 
 roadSvg.addEventListener("pointerdown", (e) => {
-  if (!overCar(e)) return;
+  if (e.button !== 0 || !overCar(e)) return;
   e.preventDefault();
   cancelAnimationFrame(scrollFrame);
   const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
@@ -331,3 +337,4 @@ function stopDrag() {
 }
 window.addEventListener("pointerup", stopDrag);
 window.addEventListener("pointercancel", stopDrag);
+window.addEventListener("blur", stopDrag);

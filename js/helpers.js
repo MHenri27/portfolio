@@ -23,3 +23,9 @@ const octagon = (cx, cy, r) =>
       return `${(cx + r * Math.cos(a)).toFixed(1)},${(cy + r * Math.sin(a)).toFixed(1)}`;
     })
     .join(" ");
+
+// only allow safe links (web pages, anchors and mail)
+const safeUrl = (url) =>
+  /^(https?:|mailto:|#)/i.test(String(url).trim()) ? String(url).trim() : "#";
+
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;

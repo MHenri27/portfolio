@@ -40,7 +40,10 @@ function goTo(href) {
     scrollToY(0);
     return;
   }
-  const section = document.querySelector(href);
+  let section = null;
+  try {
+    section = document.querySelector(href);
+  } catch (e) {}
   if (section) scrollToY(targetTop(section));
 }
 
@@ -59,8 +62,17 @@ roadSvg.addEventListener("click", (e) => {
   if (sign) goTo(sign.dataset.href);
 });
 
+// signs can be used with the keyboard too
+roadSvg.addEventListener("keydown", (e) => {
+  const sign = e.target.closest(".road-sign");
+  if (sign && (e.key === "Enter" || e.key === " ")) {
+    e.preventDefault();
+    goTo(sign.dataset.href);
+  }
+});
+
 // stop the animation when the user scrolls by hand
-["wheel", "touchstart", "keydown"].forEach((name) =>
+["wheel", "touchstart"].forEach((name) =>
   window.addEventListener(name, () => cancelAnimationFrame(scrollFrame), {
     passive: true,
   }),
