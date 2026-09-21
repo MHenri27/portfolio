@@ -1,0 +1,27 @@
+# Henri
+
+> Freelance software developer. I design and build software systems, interfaces and backend infrastructure, with the implementation and background work mattering as much as what people see.
+
+Site: https://mhenri.me/
+
+## Services
+
+- Software development
+- Backend engineering
+- Infrastructure setup
+- Custom storefronts, admin panels and dashboards
+
+## Projects
+
+- Esita Oma Maitse: a complete reconstruction of a production WooCommerce system in custom PHP and MySQL, with two storefronts, a custom admin panel, checkout, order handling and EveryPay payments. https://esitaomamaitse.ee
+- Artizon Network: a modular Minecraft network with a proxy, backend, API and game engines, built on Java 25, Gradle, Redis, Docker and MySQL with custom Velocity and Leaf forks.
+- FreshFit: a resale platform built with Next.js, Auth.js, Prisma and Neon (PostgreSQL), with catalogue, wardrobe, order management and a dashboard.
+
+## Tools
+
+Java, PHP, JavaScript, TypeScript, Python, Next.js, React, Tailwind, Prisma, MySQL, PostgreSQL, Redis, SQLite, Docker, Linux, Git, Cloudflare, Vercel.
+
+## Contact
+
+- Email: henri.maasik1@gmail.com
+- Discord: henri.ee
