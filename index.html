@@ -1,88 +1,357 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Henri</title>
-  <!-- Classic Google Fonts: Playfair Display + Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --bg: #f4efe6;        /* Warm off-white / newsprint */
-      --card-bg: #fbf9f5;   /* Lighter cream card */
-      --text: #22201e;      /* Deep ink black */
-      --accent: #d8968a;    /* Warm terracotta accent */
-      --border: #e2dacd;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    <title>Henri | Portfolio</title>
 
-    body {
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      padding: 1.5rem;
-    }
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    /* Tactile container card */
-    .card {
-      background-color: var(--card-bg);
-      border: 1px solid var(--border);
-      padding: 3.5rem 4rem;
-      border-radius: 14px;
-      /* Deeper, softer light drop shadow */
-      box-shadow: 0 20px 40px -10px rgba(40, 35, 30, 0.12), 
-                  0 12px 18px -8px rgba(40, 35, 30, 0.08);
-      text-align: center;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
+    <!-- fonts: Gloock for headings, Azeret Mono for text -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500;600&family=Gloock&display=swap"
+      rel="stylesheet"
+    />
 
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 28px 50px -12px rgba(40, 35, 30, 0.16), 
-                  0 16px 24px -8px rgba(40, 35, 30, 0.10);
-    }
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-    h1 {
-      font-family: "Libre Baskerville", serif;
-      font-size: clamp(2.2rem, 6vw, 4rem);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      line-height: 1.15;
-    }
+  <body>
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
 
-    /* The colored punctuation accent */
-    .accent {
-      color: var(--accent);
-      font-style: italic;
-      font-family: "Libre Baskerville", serif;
-    }
+    <header>
+      <a href="#top" class="logo">Henri.</a>
 
-    /* Small subtle subtext underneath */
-    .subtext {
-      margin-top: 1rem;
-      font-size: 1.25rem;
-      color: #766f65;
-      letter-spacing: 0.04em;
-    }
-  </style>
-</head>
-<body>
+      <div class="folio" aria-hidden="true">
+        <span class="folio-name" id="folioName">Introduction</span>
+      </div>
 
-  <main class="card">
-    <h1>Hey<span class="accent">!</span> I am Henri</h1>
-    <p class="subtext">Full portfolio coming...</p>
-  </main>
+      <nav class="nav-links">
+        <div class="car-picker" role="group" aria-label="Car colour">
+          <span class="cp-label">Car</span>
+          <button
+            type="button"
+            data-car="cherry"
+            style="--sw: #d94657"
+            aria-label="Cherry car"
+            aria-pressed="true"
+          ></button>
+          <button
+            type="button"
+            data-car="blue"
+            style="--sw: #1f4d67"
+            aria-label="Blue car"
+            aria-pressed="false"
+          ></button>
+          <button
+            type="button"
+            data-car="mustard"
+            style="--sw: #e2a63b"
+            aria-label="Mustard car"
+            aria-pressed="false"
+          ></button>
+        </div>
+        <a href="#work">Work</a>
+        <a href="#stack">Stack</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
 
-</body>
+    <div class="progress" id="progress" aria-hidden="true"></div>
+
+    <div class="road" aria-hidden="true">
+      <svg id="roadSvg" preserveAspectRatio="xMidYMin meet"></svg>
+    </div>
+
+    <div class="bg" aria-hidden="true">
+      <i class="shape s1" data-x="-12" data-y="10" data-speed="0.10"></i>
+      <i class="shape s2" data-x="90" data-y="55" data-speed="0.18"></i>
+      <i class="shape s3" data-x="7" data-y="70" data-speed="0.30"></i>
+      <i
+        class="shape s4"
+        data-x="94"
+        data-y="20"
+        data-speed="0.22"
+        data-spin="0.06"
+      ></i>
+      <i
+        class="shape s5"
+        data-x="68"
+        data-y="85"
+        data-speed="0.07"
+        data-spin="0.03"
+      ></i>
+      <i class="shape s6" data-x="30" data-y="-10" data-speed="0.14"></i>
+      <i
+        class="shape reg"
+        data-x="22"
+        data-y="30"
+        data-speed="0.25"
+        data-spin="0.1"
+      ></i>
+      <i
+        class="shape reg"
+        data-x="82"
+        data-y="75"
+        data-speed="0.15"
+        data-spin="-0.08"
+      ></i>
+      <i
+        class="shape reg"
+        data-x="52"
+        data-y="5"
+        data-speed="0.35"
+        data-spin="0.12"
+      ></i>
+    </div>
+
+    <main id="top">
+      <!-- hero -->
+
+      <section class="scroll-item" id="intro" data-name="Introduction">
+        <div class="content-canvas">
+          <div class="hero-layout">
+            <div
+              class="stamp hero-stamp"
+              id="coinBtn"
+              role="button"
+              tabindex="0"
+              aria-label="Flip the coin"
+            >
+              <div class="coin" id="coin">
+                <div class="face front">
+                  <svg viewBox="0 0 200 200">
+                    <defs>
+                      <path
+                        id="ringA"
+                        d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0"
+                      />
+                    </defs>
+                    <circle cx="100" cy="100" r="96" fill="#d94657" />
+                    <text
+                      font-size="15"
+                      fill="#faf6f0"
+                      font-family="Azeret Mono, monospace"
+                      font-weight="500"
+                    >
+                      <textPath
+                        href="#ringA"
+                        textLength="444"
+                        lengthAdjust="spacing"
+                      >
+                        AVAILABLE FOR FREELANCE WORK ·
+                      </textPath>
+                    </text>
+                    <text
+                      x="100"
+                      y="121"
+                      text-anchor="middle"
+                      font-family="Gloock, serif"
+                      font-size="58"
+                      fill="#faf6f0"
+                    >
+                      H.
+                    </text>
+                  </svg>
+                </div>
+                <div class="face back">
+                  <svg viewBox="0 0 200 200">
+                    <defs>
+                      <path
+                        id="ringC"
+                        d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0"
+                      />
+                    </defs>
+                    <circle cx="100" cy="100" r="96" fill="#672a31" />
+                    <text
+                      font-size="15"
+                      fill="#faf6f0"
+                      font-family="Azeret Mono, monospace"
+                      font-weight="500"
+                    >
+                      <textPath
+                        href="#ringC"
+                        textLength="444"
+                        lengthAdjust="spacing"
+                      >
+                        AVAILABLE FOR FREELANCE WORK ·
+                      </textPath>
+                    </text>
+                    <text
+                      x="100"
+                      y="121"
+                      text-anchor="middle"
+                      font-family="Gloock, serif"
+                      font-size="58"
+                      fill="#faf6f0"
+                    >
+                      M.
+                    </text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h1 class="hero-title rv">
+                Software designed
+                <em
+                  class="cycle"
+                  id="cycle"
+                  role="button"
+                  tabindex="0"
+                  title="Click me"
+                  >right.</em
+                >
+              </h1>
+            </div>
+
+            <div>
+              <p class="hero-desc rv" style="--i: 1">
+                I design and build software systems, interfaces and backend
+                infrastructure where the implementation and background work
+                matters just as much as the solution people eventually see.
+              </p>
+
+              <ol class="contents rv" style="--i: 2" id="contents"></ol>
+            </div>
+
+            <div class="hero-foot label rv" style="--i: 3"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- projects are made from js/projects.js -->
+      <div id="projects"></div>
+
+      <!-- stack -->
+
+      <section class="scroll-item" id="stack" data-name="The stack">
+        <div class="content-canvas">
+          <div class="stack-layout">
+            <div class="stack-side">
+              <h2 class="section-title rv">
+                What I have
+                <em>worked with.</em>
+              </h2>
+
+              <ul class="disciplines rv" style="--i: 1">
+                <li>
+                  <strong>Software systems</strong>
+                  <span
+                    >Backend services with clear boundaries between parts, from
+                    Java and PHP to whatever the job needs.</span
+                  >
+                </li>
+                <li>
+                  <strong>Interfaces</strong>
+                  <span
+                    >Custom storefronts, admin panels and dashboards, in
+                    JavaScript, Next.js, PHP and React.
+                  </span>
+                </li>
+                <li>
+                  <strong>Infrastructure</strong>
+                  <span>Docker, Redis, VPS and autoscaling backends.</span>
+                </li>
+              </ul>
+
+              <div class="tools rv" style="--i: 2">
+                <p class="label">
+                  Tools from the projects above, hover one to trace it
+                </p>
+                <div class="tool-list" id="toolList"></div>
+              </div>
+            </div>
+
+            <div class="stack-main">
+              <div class="matrix-wrap rv" id="matrixWrap" style="--i: 2">
+                <div class="mx-labels" id="mxLabels"></div>
+                <div
+                  class="mx-scroll"
+                  id="mxScroll"
+                  tabindex="0"
+                  aria-label="Projects and their stacks, scroll horizontally"
+                >
+                  <div class="matrix" id="matrix"></div>
+                </div>
+                <div class="mx-bar" id="mxBar">
+                  <span class="mx-thumb" id="mxThumb"></span>
+                </div>
+              </div>
+              <p class="matrix-note label rv" style="--i: 3">
+                Selected projects. Hover a cell to isolate one, drag the red bar
+                to scroll sideways.
+              </p>
+
+              <div class="more rv" style="--i: 4">
+                <h3>And plenty more</h3>
+                <dl id="moreTools"></dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- contact -->
+
+      <section class="scroll-item" id="contact" data-name="Contact">
+        <div class="content-canvas footer-content">
+          <span class="ghost" aria-hidden="true">yo</span>
+          <h2 class="footer-title rv">
+            Interested in my
+            <em>services?</em>
+          </h2>
+
+          <div class="footer-bottom rv" style="--i: 2">
+            <div class="stamp contact-stamp" aria-hidden="true"></div>
+            <div class="contact-lines">
+              <a
+                href="mailto:henri@mhenri.me"
+                class="email-link"
+                id="mailLink"
+                data-base="henri@mhenri.me"
+              >
+                henri.maasik1@gmail.com
+              </a>
+              <span class="email-link" style="cursor: default"
+                >discord: henri.ee</span
+              >
+              <button
+                type="button"
+                class="copy"
+                data-copy="henri.maasik1@gmail.com"
+              >
+                Copy email
+              </button>
+              <button type="button" class="copy" data-copy="henri.ee">
+                Copy discord
+              </button>
+            </div>
+
+            <div class="footer-side">
+              <div class="footer-meta">
+                Available for software development, backend engineering,
+                infrastructure setup and any freelance work.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/helpers.js"></script>
+    <script src="js/projects.js"></script>
+    <script src="js/render.js"></script>
+    <script src="js/scroll.js"></script>
+    <script src="js/matrix.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/obstacles.js"></script>
+    <script src="js/road.js"></script>
+    <script src="js/navigate.js"></script>
+    <script src="js/effects.js"></script>
+  </body>
 </html>
