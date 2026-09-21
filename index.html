@@ -4,20 +4,74 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Henri | Portfolio</title>
+    <title>Henri | Freelance Software Developer</title>
     <meta
       name="description"
       content="Henri, freelance software developer. Custom software systems, interfaces and backend infrastructure."
     />
+    <meta name="author" content="Henri" />
+    <meta name="theme-color" content="#f5efe7" />
+    <link rel="canonical" href="https://mhenri.me/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Henri" />
+    <meta property="og:title" content="Henri | Freelance Software Developer" />
+    <meta
+      property="og:description"
+      content="Custom software systems, interfaces and backend infrastructure. Available for freelance work."
+    />
+    <meta property="og:url" content="https://mhenri.me/" />
+    <meta property="og:image" content="https://mhenri.me/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Henri. Software designed right. Freelance software developer."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Henri | Freelance Software Developer" />
+    <meta
+      name="twitter:description"
+      content="Custom software systems, interfaces and backend infrastructure. Available for freelance work."
+    />
+    <meta name="twitter:image" content="https://mhenri.me/og.png" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://mhenri.me/#website",
+            "url": "https://mhenri.me/",
+            "name": "Henri",
+            "inLanguage": "en"
+          },
+          {
+            "@type": "Person",
+            "@id": "https://mhenri.me/#person",
+            "name": "Henri",
+            "url": "https://mhenri.me/",
+            "jobTitle": "Freelance software developer",
+            "description": "Designs and builds software systems, interfaces and backend infrastructure.",
+            "knowsAbout": ["Java", "PHP", "JavaScript", "TypeScript", "Next.js", "MySQL", "PostgreSQL", "Redis", "Docker", "Backend development", "Infrastructure"]
+          },
+          {
+            "@type": "ProfessionalService",
+            "name": "Henri, freelance software development",
+            "url": "https://mhenri.me/",
+            "provider": { "@id": "https://mhenri.me/#person" },
+            "serviceType": ["Software development", "Backend engineering", "Infrastructure setup", "Custom web development"]
+          }
+        ]
+      }
+    </script>
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'"
     />
-    <link
-      rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23d94657'/%3E%3C/svg%3E"
-    />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <script src="js/init.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -36,10 +90,19 @@
     <a class="skip" href="#intro">Skip to content</a>
 
     <noscript>
-      <p style="padding: 2rem">
-        This site needs JavaScript. You can reach me at
-        <a href="mailto:henri@mhenri.me">henri@mhenri.me</a>.
-      </p>
+      <div style="padding: 2rem; max-width: 40rem">
+        <h1>Henri, freelance software developer</h1>
+        <p>
+          I design and build software systems, interfaces and backend
+          infrastructure. This site works best with JavaScript turned on.
+        </p>
+        <ul>
+          <li>Esita Oma Maitse: custom PHP commerce system with two shops.</li>
+          <li>Artizon Network: modular Java server network.</li>
+          <li>FreshFit: Next.js resale platform.</li>
+        </ul>
+        <p>Contact: <a href="mailto:henri@mhenri.me">henri@mhenri.me</a></p>
+      </div>
     </noscript>
 
     <header>
