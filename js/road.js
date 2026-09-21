@@ -79,6 +79,8 @@ function skidAt(y) {
 }
 
 function buildRoad() {
+  // the road is hidden on small screens
+  if (!roadSvg.parentElement.offsetWidth) return;
   const roadPx = roadSvg.parentElement.clientWidth || SCENE_W;
   const scale = roadPx / SCENE_W;
   roadScale = scale;

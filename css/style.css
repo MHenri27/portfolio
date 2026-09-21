@@ -1343,7 +1343,11 @@ em .ch:hover {
 
 @media (max-width: 700px) {
   :root {
-    --road: 70px;
+    --road: 0px;
+  }
+
+  .road {
+    display: none;
   }
 }
 
