@@ -220,6 +220,10 @@ main {
 }
 
 /* scroll items */
+.scroll-item:focus {
+  outline: none;
+}
+
 
 .scroll-item {
   margin-left: var(--road);
@@ -967,7 +971,7 @@ main {
   will-change: transform;
 }
 
-/* hero */
+/* hero details */
 .hero-layout {
   position: relative;
 }

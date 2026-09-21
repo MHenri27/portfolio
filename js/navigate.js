@@ -48,7 +48,12 @@ function goTo(href) {
   try {
     section = document.querySelector(href);
   } catch (e) {}
-  if (section) scrollToY(targetTop(section));
+  if (section) {
+    scrollToY(targetTop(section));
+    // move keyboard focus to the section too
+    section.setAttribute("tabindex", "-1");
+    section.focus({ preventScroll: true });
+  }
 }
 
 // links to sections
