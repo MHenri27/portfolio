@@ -33,6 +33,8 @@
   </head>
 
   <body>
+    <a class="skip" href="#intro">Skip to content</a>
+
     <noscript>
       <p style="padding: 2rem">
         This site needs JavaScript. You can reach me at
@@ -96,9 +98,9 @@
 
     <div class="progress" id="progress" aria-hidden="true"></div>
 
-    <div class="road" aria-hidden="true">
+    <nav class="road" aria-label="Section map">
       <svg id="roadSvg" preserveAspectRatio="xMidYMin meet"></svg>
-    </div>
+    </nav>
 
     <div class="bg" aria-hidden="true">
       <i class="shape s1" data-x="-12" data-y="10" data-speed="0.10"></i>
@@ -145,7 +147,7 @@
     <main id="top">
       <!-- hero -->
 
-      <section class="scroll-item" id="intro" data-name="Introduction">
+      <section class="scroll-item" id="intro" data-name="Introduction" aria-label="Introduction">
         <div class="content-canvas">
           <div class="hero-layout">
             <div
@@ -230,6 +232,7 @@
             </div>
             <div>
               <h1 class="hero-title rv">
+                <span class="sr-only">Henri, freelance software developer.</span>
                 Software designed
                 <em
                   class="cycle"
@@ -262,7 +265,7 @@
 
       <!-- stack -->
 
-      <section class="scroll-item" id="stack" data-name="The stack">
+      <section class="scroll-item" id="stack" data-name="The stack" aria-label="The stack">
         <div class="content-canvas">
           <div class="stack-layout">
             <div class="stack-side">
@@ -331,7 +334,7 @@
 
       <!-- contact -->
 
-      <section class="scroll-item" id="contact" data-name="Contact">
+      <section class="scroll-item" id="contact" data-name="Contact" aria-label="Contact">
         <div class="content-canvas footer-content">
           <span class="ghost" aria-hidden="true">yo</span>
           <h2 class="footer-title rv">

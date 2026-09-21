@@ -5,7 +5,7 @@
 
   --ink: #241b1b;
   --ink-soft: #655454;
-  --ink-faint: #8e7a74;
+  --ink-faint: #6d5b55;
 
   --link: #1f4d67;
 
@@ -271,6 +271,34 @@ main {
   transform: none;
 }
 
+/* hidden but readable by screen readers and search engines */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* skip link for keyboard users */
+.skip {
+  position: fixed;
+  top: 0.8rem;
+  left: 0.8rem;
+  z-index: 1000;
+  padding: 0.6rem 1rem;
+  background: var(--ink);
+  color: var(--paper-light);
+  font-size: 0.85rem;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip:focus {
+  transform: none;
+}
+
 /* small label */
 .label {
   font-size: 0.8em;
@@ -280,7 +308,7 @@ main {
 }
 
 .label b {
-  color: var(--cherry);
+  color: var(--cherry-dark);
   font-weight: 500;
 }
 
@@ -384,7 +412,7 @@ main {
 
 .contents .c-n {
   font-size: 0.8rem;
-  color: var(--cherry);
+  color: var(--cherry-dark);
   letter-spacing: 0.1em;
   min-width: 2ch;
 }
@@ -451,7 +479,7 @@ main {
 .project-tools span {
   display: block;
   margin-bottom: 0.35rem;
-  color: var(--cherry);
+  color: var(--cherry-dark);
 }
 
 /* what was built */
@@ -522,7 +550,7 @@ main {
   font-size: 0.92rem;
   font-weight: 800;
   letter-spacing: 0.16em;
-  color: var(--cherry);
+  color: var(--cherry-dark);
 }
 
 .spec-list {
@@ -652,7 +680,7 @@ main {
   font-size: 0.77rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--cherry);
+  color: var(--cherry-dark);
 }
 
 .mx-labels .m-row.head {
@@ -785,7 +813,7 @@ main {
 
 .footer-label {
   margin-bottom: 2rem;
-  color: var(--cherry);
+  color: var(--cherry-dark);
 }
 
 .footer-title {
@@ -1163,7 +1191,7 @@ em .ch:hover {
   top: 0;
   right: 0;
   padding: 0.55rem 0.9rem;
-  background: var(--cherry);
+  background: var(--cherry-dark);
   color: var(--paper-light);
   font-size: 0.77rem;
   font-weight: 600;
@@ -1593,7 +1621,7 @@ em .ch:hover {
   font-size: 0.77rem;
   letter-spacing: 0.13em;
   text-transform: uppercase;
-  color: var(--cherry);
+  color: var(--cherry-dark);
 }
 
 .more dd {
@@ -1769,7 +1797,7 @@ em .ch:hover {
     font-family: var(--mono);
     font-size: 0.75rem;
     letter-spacing: 0.1em;
-    color: var(--cherry);
+    color: var(--cherry-dark);
   }
 
   .scroll-item {

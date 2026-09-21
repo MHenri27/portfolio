@@ -47,7 +47,7 @@ function projectSection(p) {
     '<svg viewBox="0 0 40 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M38 22 C 26 24, 14 18, 5 7"/><path d="M4 15 L4 6 L13 7"/></svg>';
   const built = (p.builtWith || []).map(esc).join(" · ");
   return `
-<section class="scroll-item" id="${esc(p.id)}" data-name="${esc(oneLine(p.title))}">
+<section class="scroll-item" id="${esc(p.id)}" data-name="${esc(oneLine(p.title))}" aria-label="${esc(oneLine(p.title))}">
   <div class="content-canvas">
     ${p.ghost ? `<span class="ghost" aria-hidden="true">${esc(p.ghost)}</span>` : ""}
     <div class="project-grid">
