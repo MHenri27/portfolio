@@ -2,22 +2,22 @@
 // To add a project, copy one object, paste it at the end of PROJECTS and edit it.
 // The project page, contents list, stack matrix, tool list and road sign all update.
 //
-// id            unique name without spaces, used for the #link
-// title         big heading, use "\n" for a line break
-// sign          short text on the road sign (defaults to title)
-// short         small note in the contents list
-// sticker       tilted label in the corner
-// ghost         big faded word behind the page
-// note          small note next to the title
-// desc          the paragraph
-// highlights    parts of desc to highlight
-// scope         list of what was built
-// builtWith     tools in the "Built with" line
-// extraTools    more tools for the tool list
-// link          [label, url]
-// specs         [[key, value], ...]
-// illustration  "shops", "network", "hanger", "blocks" or your own svg string
-// stack         tools per layer: interface, application, data, infrastructure, commerce
+// id - unique name without spaces, used for the #link
+// title - big heading, use "\n" for a line break
+// sign - short text on the road sign (defaults to title)
+// short - small note in the contents list
+// sticker - tilted label in the corner
+// ghost - big faded word behind the page
+// note - small note next to the title
+// desc - the paragraph
+// highlights - parts of desc to highlight
+// scope - list of what was built
+// builtWith - tools in the "Built with" line
+// extraTools - more tools for the tool list
+// link - [label, url]
+// specs - [[key, value], ...]
+// illustration - "shops", "network", "hanger", "blocks" or your own svg string
+// stack - tools per layer: interface, application, data, infrastructure, commerce
 
 const PROJECTS = [
   {
