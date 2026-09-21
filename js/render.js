@@ -81,7 +81,8 @@ document.getElementById("contents").innerHTML =
     (p) =>
       `<li><a href="#${esc(p.id)}"><span class="c-title">${esc(oneLine(p.title))}</span><span class="c-note">${esc(p.short || "")}</span></a></li>`,
   ).join("") +
-  `<li><a href="#stack"><span class="c-title">The stack</span><span class="c-note">Skills</span></a></li>`;
+  `<li><a href="#stack"><span class="c-title">The stack</span><span class="c-note">Skills</span></a></li>` +
+  `<li><a href="#contact"><span class="c-title">Contact</span><span class="c-note">Get in touch</span></a></li>`;
 
 if (PROJECTS.length) {
   const workLink = document.querySelector('.nav-links a[href="#work"]');
